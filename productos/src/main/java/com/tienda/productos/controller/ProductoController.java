@@ -5,6 +5,7 @@ import com.tienda.productos.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,12 @@ public class ProductoController {
     @GetMapping
     public List<Producto> listarProductos() {
         return productoService.obtenerTodos();
+    }
+    @GetMapping("/vista-productos")
+    public String mostrarProductosEnVista(Model model) {
+    List<Producto> lista = productoService.obtenerTodos();
+    model.addAttribute("productos", lista);
+    return "productos";
     }
 
     @GetMapping("/{id}")

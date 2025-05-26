@@ -5,6 +5,7 @@ import com.tienda.pedidos.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,12 @@ public class PedidoController {
     @GetMapping
     public List<Pedido> listarPedidos() {
         return pedidoService.obtenerTodos();
+    }
+    @GetMapping("/vista-pedidos")
+    public String mostrarPedidosEnVista(Model model) {
+    List<Pedido> lista = pedidoService.obtenerTodos();
+    model.addAttribute("pedidos", lista);
+    return "pedidos";
     }
 
     @GetMapping("/{id}")

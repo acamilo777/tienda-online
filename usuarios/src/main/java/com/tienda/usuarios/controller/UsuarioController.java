@@ -5,6 +5,7 @@ import com.tienda.usuarios.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,12 +21,22 @@ public class UsuarioController {
     public List<Usuario> listarUsuarios() {
         return usuarioService.obtenerTodos();
     }
+     
+    @GetMapping("/vista-usuarios")
+    public String mostrarUsuariosEnVista(Model model) {
+    List<Usuario> lista = usuarioService.obtenerTodos();
+    model.addAttribute("usuarios", lista);
+    return "usuarios"; // nombre del archivo HTML (usuarios.html)
+    }
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioService.obtenerPorId(id);
         return usuario.map(ResponseEntity::ok)
                       .orElseGet(() -> ResponseEntity.notFound().build());
+   
     }
 
     @PostMapping
