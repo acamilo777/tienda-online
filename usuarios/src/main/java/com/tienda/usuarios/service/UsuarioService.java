@@ -1,17 +1,14 @@
 package com.tienda.usuarios.service;
 
-import com.tienda.usuarios.entities.Usuario;
-import com.tienda.usuarios.repository.UsuarioRepository;
-
-import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.tienda.usuarios.entities.Usuario;
+import com.tienda.usuarios.repository.UsuarioRepository;
 
-@Tag(name="Usuarios",description="Operaciones relacionadas con Usuarios")
 @Service
 public class UsuarioService {
 
@@ -33,5 +30,4 @@ public class UsuarioService {
     public void eliminarUsuario(Long id) {
         usuarioRepository.deleteById(id);
     }
-    
 }

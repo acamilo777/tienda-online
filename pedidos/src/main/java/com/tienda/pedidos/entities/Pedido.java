@@ -16,10 +16,15 @@ public class Pedido {
     private Long productoId;
     private int cantidad;
 
-    public Pedido() {
+    public Pedido() {}
+
+    public Pedido(Long id, Long usuarioId, Long productoId, int cantidad) {
+        this.id = id;
+        this.usuarioId = usuarioId;
+        this.productoId = productoId;
+        this.cantidad = cantidad;
     }
 
-    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -51,12 +56,4 @@ public class Pedido {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-    public Pedido(Long id, Long usuarioId, Long productoId, int cantidad) {
-        this.id = id;
-        this.usuarioId = usuarioId;
-        this.productoId = productoId;
-        this.cantidad = cantidad;
-    }
-    
 }

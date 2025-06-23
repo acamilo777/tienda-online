@@ -13,38 +13,26 @@ public class Usuario {
     private Long id;
 
     private String nombre;
-    private String email;
+    private String correo;
+    private String direccion;
 
-    public Usuario() {}
-
-    public Long getId() {
-        return id;
+    public Usuario() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // Getters y setters
+    public Long getId() { return id; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getNombre() { return nombre; }
 
-    public String getEmail() {
-        return email;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getCorreo() { return correo; }
 
-    public Usuario(Long id, String nombre, String email) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-    }
-    
+    public void setCorreo(String correo) { this.correo = correo; }
+
+    public String getDireccion() { return direccion; }
+
+    public void setDireccion(String direccion) { this.direccion = direccion; }
 }

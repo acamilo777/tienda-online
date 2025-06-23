@@ -24,41 +24,41 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-    @Operation(summary="Obtener lista de productos",description="Devuelve todos los productos disponibles")
-    @ApiResponse(responseCode = "200", description="Lista de productos retornada correctamente",
-	    content = @Content(mediaType = "application/json",
-	    schema=@Schema(implementation = Producto.class)))
+    @Operation(summary = "Obtener lista de productos", description = "Devuelve todos los productos disponibles")
+    @ApiResponse(responseCode = "200", description = "Lista de productos retornada correctamente",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Producto.class)))
     @GetMapping
     public List<Producto> listarProductos() {
         return productoService.obtenerTodos();
     }
+
     @GetMapping("/vista-productos")
     public String mostrarProductosEnVista(Model model) {
-    List<Producto> lista = productoService.obtenerTodos();
-    model.addAttribute("productos", lista);
-    return "productos";
+        List<Producto> lista = productoService.obtenerTodos();
+        model.addAttribute("productos", lista);
+        return "productos";  // Asegúrate de tener esta vista Thymeleaf
     }
 
-    
-    @Operation(summary="Obtener producto por Id", description="Obtiene el detalle de un producto especifico")
+    @Operation(summary = "Obtener producto por Id", description = "Obtiene el detalle de un producto específico")
     @ApiResponses(value = {
-	    @ApiResponse(responseCode="200", description = "Producto encontrado",
-		    content=@Content(mediaType="application/json",schema=@Schema(implementation=Producto.class))),
-	    @ApiResponse(responseCode = "404",description="Producto no encontrado")
+            @ApiResponse(responseCode = "200", description = "Producto encontrado",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Producto.class))),
+            @ApiResponse(responseCode = "404", description = "Producto no encontrado")
     })
     @GetMapping("/{id}")
     public ResponseEntity<Producto> obtenerProductoPorId(@PathVariable Long id) {
         Optional<Producto> producto = productoService.obtenerPorId(id);
         return producto.map(ResponseEntity::ok)
-                       .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @Operation(summary ="Crear un nuevo producto",description="Crea un producto con los datos proporcionados")
-    @ApiResponse(responseCode="201", description="Producto creado correctamente",
-	    content=@Content(mediaType = "application/json", schema=@Schema(implementation = Producto.class)))
+    @Operation(summary = "Crear un nuevo producto", description = "Crea un producto con los datos proporcionados")
+    @ApiResponse(responseCode = "201", description = "Producto creado correctamente",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Producto.class)))
     @PostMapping
-    public Producto crearProducto(@RequestBody Producto producto) {
-        return productoService.guardarProducto(producto);
+    public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto) {
+        Producto creado = productoService.guardarProducto(producto);
+        return ResponseEntity.status(201).body(creado);
     }
 
     @PutMapping("/{id}")

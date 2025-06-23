@@ -1,18 +1,20 @@
 package com.tienda.pedidos.service;
 
-import com.tienda.pedidos.entities.Pedido;
-import com.tienda.pedidos.repository.PedidoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
+
+import com.tienda.pedidos.entities.Pedido;
+import com.tienda.pedidos.repository.PedidoRepository;
 
 @Service
 public class PedidoService {
 
-    @Autowired
-    private PedidoRepository pedidoRepository;
+    private final PedidoRepository pedidoRepository;
+
+    public PedidoService(PedidoRepository pedidoRepository) {
+        this.pedidoRepository = pedidoRepository;
+    }
 
     public List<Pedido> obtenerTodos() {
         return pedidoRepository.findAll();
