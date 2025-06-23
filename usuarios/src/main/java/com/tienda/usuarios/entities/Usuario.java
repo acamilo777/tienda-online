@@ -40,4 +40,11 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Usuario(Long id, String nombre, String email) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+    }
+    
 }
