@@ -51,4 +51,12 @@ public class Pedido {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    public Pedido(Long id, Long usuarioId, Long productoId, int cantidad) {
+        this.id = id;
+        this.usuarioId = usuarioId;
+        this.productoId = productoId;
+        this.cantidad = cantidad;
+    }
+    
 }

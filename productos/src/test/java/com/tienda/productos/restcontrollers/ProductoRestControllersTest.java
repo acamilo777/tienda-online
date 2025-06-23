@@ -38,8 +38,8 @@ public class ProductoRestControllersTest {
     @Test
     public void verProductosTest() throws Exception{
 	    when (productoservice.obtenerTodos()).thenReturn(productosLista);
-	    mockmvc.perform(get("/productos"))
-	    .contentType(MediaType.APPLICATION_JSON)
+	    mockmvc.perform(get("/productos")
+	    .contentType(MediaType.APPLICATION_JSON))
 	    .andExpect(status().isOk());
     }
 
