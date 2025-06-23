@@ -2,12 +2,16 @@ package com.tienda.usuarios.service;
 
 import com.tienda.usuarios.entities.Usuario;
 import com.tienda.usuarios.repository.UsuarioRepository;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Tag(name="Usuarios",description="Operaciones relacionadas con Usuarios")
 @Service
 public class UsuarioService {
 
