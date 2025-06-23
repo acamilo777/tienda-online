@@ -1,41 +1,56 @@
-# 🛒 Tienda Online - Microservicios
-Proyecto de ejemplo para la gestión de una tienda utilizando arquitectura de microservicios con Spring Boot y MySQL.
-Cada microservicio debe ejecutarse por separado con su correspondiente application.properties. Se debe tener MySQL activo y las bases de datos creadas (usuariosdb, productosdb, pedidosdb).
+# Tienda Online - Microservicios con Spring Boot
 
+![Java](https://img.shields.io/badge/Java-17-blue)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.3-green)
+![Maven](https://img.shields.io/badge/Maven-3.8.1-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
+---
 
+## Descripción
 
-USUARIOS:
+Proyecto de tienda online desarrollado con arquitectura de microservicios usando Spring Boot 3.5.3.  
+El sistema consta de varios microservicios independientes para **productos**, **usuarios**, **pedidos** y una API Gateway que orquesta las llamadas y ofrece interfaz web con Thymeleaf.
 
-GET http://localhost:8081/usuarios
-GET http://localhost:8081/usuarios/id
-POST http://localhost:8081/usuarios
-DELETE http://localhost:8081/usuarios/id
+---
 
-{
-  "nombre": "Cristiano Ronaldo",
-  "email": "cristiano@penaldo.cl"
-}
+## Tecnologías
 
+- Java 17
+- Spring Boot 3.5.3
+- Spring Data JPA
+- Spring Web MVC / REST
+- Thymeleaf (en API Gateway)
+- MySQL
+- Maven
+- Springdoc OpenAPI (Documentación API)
+- JUnit 5 (Testing)
 
-PRODUCTOS:
-GET http://localhost:8082/productos
-POST http://localhost:8082/usuarios
-DELETE http://localhost:8082/productos/id
-{
-  "nombre": "Perfume Acqua di Gio",
-  "precio": 39990,
-  "stock": 20
-}
+---
 
-{
-  "nombre": "Crema Nivea",
-  "precio": 9900,
-  "stock": 50
-}
+## Estructura del proyecto
 
+| Microservicio  | Descripción                                  | Puerto por defecto |
+| -------------- | --------------------------------------------|--------------------|
+| productos      | Gestión de productos (CRUD)                  | 8081               |
+| usuarios       | Gestión de usuarios                          | 8082               |
+| pedidos        | Gestión de pedidos                           | 8083               |
+| tienda (gateway) | API Gateway con interfaz web y orquestación | 8084               |
 
-PEDIDOS:
-GET http://localhost:8083/pedidos
-POST http://localhost:8083/pedidos
-DELETE http://localhost:8083/pedidos/id
+---
+
+## Requisitos
+
+- Java 17 o superior
+- Maven 3.8.1 o superior
+- MySQL configurado y corriendo localmente o en servidor
+
+---
+
+## Instalación y ejecución
+
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/acamilo777/tienda-online.git
+cd tienda-online

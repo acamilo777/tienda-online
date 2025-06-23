@@ -40,7 +40,7 @@ public class UsuarioControllerTest {
             return new RestTemplate();
         }
     }
-
+    @SuppressWarnings("unused")
     @BeforeEach
     void setup() {
         mockServer = MockRestServiceServer.createServer(restTemplate);
